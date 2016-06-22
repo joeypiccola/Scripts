@@ -1,4 +1,4 @@
-﻿function Get-DomainComputerObjectCounts
+﻿function Get-DomainComputerObjectCountss
 {
 <#
 .SYNOPSIS
