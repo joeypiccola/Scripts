@@ -2,10 +2,10 @@
 {
 <#
 .SYNOPSIS
-Move files from a source to a destination with a log file. 
+Copy files from a source to a destination with a log file. 
  
 .DESCRIPTION
-Move files from a source to a destinaion via robocopy. Do so by launching
+Copy files from a source to a destinaion via robocopy. Do so by launching
 a new powershell window that runs synchronous to the process used to run
 this function. This function does not provide any error handeling for 
 robocopy. It assumes checks have already been performed to ensure its success
@@ -13,10 +13,10 @@ in accessing both the source and destination file shares!! Leverage the
 robocopy parameters in the function. 
  
 .PARAMETER Source
-The source directory to move. 
+The source directory to copy. 
  
 .PARAMETER Destination
-The destination directory to move the files to.
+The destination directory to copy the files to.
  
 .PARAMETER LogDirectory
 The directory to create the log file in.
