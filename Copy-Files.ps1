@@ -50,10 +50,12 @@ Last Modified: 07/23/15
     process
     {
         $robotool = 'C:\Windows\System32\Robocopy.exe'
+        $source = Split-Path ($source -replace '[:]') -Leaf
+        $destination = Split-Path ($destination -replace '[:]') -Leaf
         if (Test-Path -Path $robotool)
         {
             Write-Verbose "Starting copy: $(Get-Date)"
-            $LogFile = Join-Path -Path $LogDirectory -ChildPath "$($source.Split('\')[($source.split('\').Length)-1])_to_$($destination.Split('\')[($destination.split('\').Length)-1])_$(Get-Date -Format MMddyy-hhmmss).txt"
+            $LogFile = Join-Path -Path $LogDirectory -ChildPath "$source`_to_$destination`_$(Get-Date -Format MMddyy-hhmmss).txt"
             $notes = "Source: $Source`nDestination: $Destination`nLog file: $LogFile"
             Write-Verbose $notes
             $params = "/e /z /W:1 /R:1 /LOG:`"$LogFile`""
