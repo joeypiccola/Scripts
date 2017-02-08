@@ -31,6 +31,8 @@
 		D:\pagefile.sys            1024            2048
 		E:\pagefile.sys            2048            2048
 	.LINK
+		Source:
+		https://gallery.technet.microsoft.com/scriptcenter/Script-to-configure-e8d85fee
 		Get-WmiObject
 		http://technet.microsoft.com/library/hh849824.aspx
 #>
