@@ -29,6 +29,10 @@ Provide a source and a destination to copy files. Create logs in the directory p
 .NOTES
 Author: Joey Piccola
 Last Modified: 07/23/15
+- setup /MT
+- setup param to include excluded files and or dir
+- setup to work just on files
+
 #>
  
     [CmdletBinding()]
