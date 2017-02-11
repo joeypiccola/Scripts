@@ -20,9 +20,18 @@ The destination directory to copy the files to.
  
 .PARAMETER LogDirectory
 The directory to create the log file in.
- 
+
+.PARAMETER FilesToExclude
+A list of files to exclude e.g. 'red blue green.txt' This param does not currently support files names with spaces. 
+
+.PARAMETER DirectoriesToExclude
+A list of directories to exclude e.g. 'one two three'. This param does not currently support directory names with spaces. 
+
 .EXAMPLE
 Copy-Files -Source '\\file01.contoso.com\home\fkline' -Destination '\\file02.ollie.contoso.com\home\fkline' -LogsDirectory 'c:\logs\fileMoves'
+
+.EXAMPLE
+Copy-Files -Source 'c:\' -Destination 'd:\' -LogsDirectory 'e:\logs\fileMoves' -FilesToExclude 'red blue green.txt' -DirectoriesToExclude 'one two three'
  
 Provide a source and a destination to copy files. Create logs in the directory provided.
  
@@ -49,6 +58,12 @@ Last Modified: 07/23/15
         [Parameter(Mandatory)]
         [ValidateScript({Test-Path -Path $_})]
         [string]$LogDirectory
+        ,
+        [Parameter()]
+        [string]$FilesToExclude
+        ,
+        [Parameter()]
+        [string]$DirectoriesToExclude
     )
  
     begin {Write-Verbose "Begin function $($MyInvocation.MyCommand.name)"}
@@ -63,7 +78,7 @@ Last Modified: 07/23/15
             $LogFile = Join-Path -Path $LogDirectory -ChildPath "$SourceLog`_to_$DestinationLog`_$(Get-Date -Format MMddyy-hhmmss).txt"
             $notes = "Source: $Source`nDestination: $Destination`nLog file: $LogFile"
             Write-Verbose $notes
-            $params = "/e /z /W:1 /R:1 /LOG:`"$LogFile`""
+            $params = "/XD $DirectoriesToExclude /XF $FilesToExclude /e /z /W:1 /R:1 /LOG:`"$LogFile`""
             start powershell -ArgumentList "write-host 'Start: $(get-date)`n$notes';measure-command {$robotool $Source $Destination $params};Write-Host 'Stop`n$notes'; pause"
         }
         else
