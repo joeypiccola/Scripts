@@ -1,5 +1,9 @@
-﻿Function Enable-OfflineDisk 
+﻿Function Enable-OfflineDisk
 { 
+    
+    # for this to work on 08, auto mount needs to be disabled
+    # New-ItemProperty -Path “HKLM:\SYSTEM\CurrentControlSet\Services\MountMgr” -Name NoAutoMount -Value “1” -PropertyType DWord -Force
+    
     #Check for offline disks on server. 
     $offlinedisk = "list disk" | diskpart | where {$_ -match "offline"} 
     #If offline disk(s) exist 
