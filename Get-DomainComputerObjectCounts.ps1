@@ -10,7 +10,7 @@ Query AD and get all the computer OS types. Output the counts
 .EXAMPLE
 Get-DomainComputerObjectCounts -DaysOldThreshold 45 -DomainController dc01.contoso.com
 
-DESCRIPTION:
+.DESCRIPTION
 Query AD, specifically the dc01.contoso.com DC, for OS types of computers that have reset their password within the last 45 days. 
 
 .PARAMETER DaysOldThreshold
