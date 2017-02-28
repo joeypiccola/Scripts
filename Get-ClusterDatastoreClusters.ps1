@@ -12,7 +12,7 @@
 
     begin
     {
-        # verify we can connect to the provided cluster
+        # verify we can connect to the provided cluster.
         if (!($GetCluster = Get-Cluster -Name $Cluster))
         {
             Write-Verbose "Unable to connect to `"$Cluster`""
