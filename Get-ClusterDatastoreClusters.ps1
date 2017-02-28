@@ -21,7 +21,7 @@ function Get-ClusterDatastoreClusters
     }
     process
     {
-        $pods = Get-Cluster las1-vc-entsvc | Get-Datastore | ?{$_.ParentFolderId -like 'StoragePod-group-*'} | sort -Unique -Property ParentFolderID
+        $pods = Get-Cluster $Cluster | Get-Datastore | ?{$_.ParentFolderId -like 'StoragePod-group-*'} | sort -Unique -Property ParentFolderID
         Write-Verbose "Found $($pods.count)x datastore cluster on $cluster cluster."
         foreach ($pod in $pods)
         {
